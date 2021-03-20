@@ -31,7 +31,6 @@ module.exports = {
         })
     },
     delete: async (req, res) => {
-        console.log("Niabot")
         const { id } = req.params;
 
         const employee = await Employee.delete(id);

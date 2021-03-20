@@ -2,7 +2,6 @@ const express = require('express');
 const r = require('rethinkdb');
 const app = express();
 const PORT = process.env.PORT || 5000;
-const testAPIRouter = require("./routers/testAPI");
 
 //IMPORT MODELS
 require('./models/company');
@@ -15,7 +14,6 @@ app.use(express.json());
 require('./routers/company')(app);
 require('./routers/employee')(app);
 require('./routers/user')(app);
-app.use("/testAPI", testAPIRouter);
 
 // CONNECT TO DB
 (async () => {
