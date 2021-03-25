@@ -24,11 +24,20 @@ module.exports = {
         }
 
         const company = await Company.update(id, req.body);
+        console.log("Update Result", company)
 
-        return res.status(202).send({
-            error: false,
-            company
-        })
+        if (company.replaced > 0) {
+            return res.status(200).send({
+                error: false,
+                company
+            })
+        } else {
+            return res.status(400).send({
+                error: true,
+                company
+            })
+        }
+
     },
     delete: async (req, res) => {
         const { id } = req.params;
@@ -41,7 +50,7 @@ module.exports = {
 
         const company = await Company.delete(id);
 
-        return res.status(202).send({
+        return res.status(200).send({
             error: false,
             company
         })

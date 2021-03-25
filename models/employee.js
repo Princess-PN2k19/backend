@@ -18,6 +18,7 @@ module.exports = {
 
     update: async (id, data) => {
         const connect = await r.connect();
+        console.log(data)
         return r.table('employee').get(id).update(data).run(connect)
     },
 

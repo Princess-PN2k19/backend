@@ -9,7 +9,6 @@ module.exports = {
     },
     login: async (req, res) => {
         const user = await User.login(req.body);
-        console.log("USER LIST", user, req.body)
 
         try {
             if (user.length > 0) {
@@ -31,7 +30,6 @@ module.exports = {
         const user = await User.register(req.body);
         const connect = await r.connect();
         const result = await r.table('user').filter({ "username": req.body.username }).coerceTo('array').run(connect)
-        console.log("REG LIST", result, req.body)
 
         if (result > 0) {
             return res.status(409).send({
