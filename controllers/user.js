@@ -31,10 +31,10 @@ module.exports = {
         const connect = await r.connect();
         const result = await r.table('user').filter({ "username": req.body.username }).coerceTo('array').run(connect)
 
-        if (result > 0) {
+        if (result.length > 1) {
             return res.status(409).send({
-                error: true,
-                user
+                error: true, 
+                message: "Username already exist!"
             })
         } else {
             return res.status(201).send({

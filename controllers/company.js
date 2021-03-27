@@ -24,7 +24,6 @@ module.exports = {
         }
 
         const company = await Company.update(id, req.body);
-        console.log("Update Result", company)
 
         if (company.replaced > 0) {
             return res.status(200).send({
@@ -34,7 +33,6 @@ module.exports = {
         } else {
             return res.status(400).send({
                 error: true,
-                company
             })
         }
 

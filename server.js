@@ -14,6 +14,7 @@ app.use(express.json());
 require('./routers/company')(app);
 require('./routers/employee')(app);
 require('./routers/user')(app);
+require('./routers/position')(app);
 
 // CONNECT TO DB
 (async () => {
