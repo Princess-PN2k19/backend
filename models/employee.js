@@ -25,5 +25,10 @@ module.exports = {
     delete: async (id) => {
         const connect = await r.connect();
         return r.table('employee').get(id).update({status: 'Inactive'}).run(connect)
+    },
+
+    getByEmployeeName: async (name) => {
+        const connect = await r.connect();
+        return r.table('employee').filter({employee_name: name}).coerceTo('array').run(connect)
     }
 }
