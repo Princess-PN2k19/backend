@@ -29,6 +29,6 @@ module.exports = {
 
     getByEmployeeName: async (name) => {
         const connect = await r.connect();
-        return r.table('employee').filter({employee_name: name}).coerceTo('array').run(connect)
+        return r.table('employee').filter({employee_name: name , status: 'Active'}).coerceTo('array').run(connect)
     }
 }

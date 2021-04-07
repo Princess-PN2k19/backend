@@ -28,6 +28,6 @@ module.exports = {
 
     getByCompanyName: async (name) => {
         const connect = await r.connect();
-        return r.table('company').filter({company_name: name}).coerceTo('array').run(connect)
+        return r.table('company').filter({company_name: name, status: 'Active'}).coerceTo('array').run(connect)
     }
 }
