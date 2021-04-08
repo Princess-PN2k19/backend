@@ -2,7 +2,7 @@ const r = require('rethinkdb');
 const User = require('../model/user');
 
 module.exports = {
-    getAllUsers: async (req, res) => {
+    getAllUser: async (req, res) => {
         const users = await User.getAll();
 
         return res.status(200).send(users);

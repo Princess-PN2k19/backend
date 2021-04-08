@@ -6,6 +6,7 @@ module.exports = {
 
         return res.status(200).send(companies);
     },
+
     create: async (req, res) => {
         const { company_name } = req.body
         const company_by_name = await Company.getByCompanyName(company_name)
@@ -26,6 +27,7 @@ module.exports = {
         }
 
     },
+    
     update: async (req, res) => {
         const { id } = req.params;
         const { company_name } = req.body

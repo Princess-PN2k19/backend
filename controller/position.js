@@ -2,7 +2,7 @@ const r = require('rethinkdb');
 const Position = require('../model/position');
 
 module.exports = {
-    getAllPositions: async (req, res) => {
+    getAllPosition: async (req, res) => {
         const positions = await Position.getAll();
         return res.status(200).send(positions);
     },

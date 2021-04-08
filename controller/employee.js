@@ -1,7 +1,7 @@
 const Employee = require('../model/employee')
 
 module.exports = {
-    getAllEmployees: async (req, res) => {
+    getAllEmployee: async (req, res) => {
         const employees = await Employee.getAll();
 
         return res.status(200).send(employees);

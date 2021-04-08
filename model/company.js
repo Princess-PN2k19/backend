@@ -1,33 +1,27 @@
-const r = require('rethinkdb');
+var r = require('rethinkdbdash')();
 
 module.exports = {
     getAll: async () => {
-        const connect = await r.connect();
-        return r.table('company').filter({status: 'Active'}).coerceTo('array').run(connect)
+        return r.table('company').filter({status: 'Active'}).coerceTo('array').run()
     },
 
     getById: async (id) => {
-        const connect = await r.connect();
-        return r.table('company').get(id).run(connect)
+        return r.table('company').get(id).run()
     },
 
     create: async (data) => {
-        const connect = await r.connect();
-        return r.table('company').insert(data).run(connect)
+        return r.table('company').insert(data).run()
     },
 
     update: async (id, data) => {
-        const connect = await r.connect();
-        return r.table('company').get(id).update(data).run(connect)
+        return r.table('company').get(id).update(data).run()
     },
 
     delete: async (id) => {
-        const connect = await r.connect();
-        return r.table('company').get(id).update({status: 'Inactive'}).run(connect)
+        return r.table('company').get(id).update({status: 'Inactive'}).run()
     },
 
     getByCompanyName: async (name) => {
-        const connect = await r.connect();
-        return r.table('company').filter({company_name: name, status: 'Active'}).coerceTo('array').run(connect)
+        return r.table('company').filter({company_name: name, status: 'Active'}).coerceTo('array').run()
     }
 }
