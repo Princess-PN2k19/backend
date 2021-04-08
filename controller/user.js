@@ -1,5 +1,5 @@
 const r = require('rethinkdb');
-const User = require('../models/user');
+const User = require('../model/user');
 
 module.exports = {
     getAllUsers: async (req, res) => {

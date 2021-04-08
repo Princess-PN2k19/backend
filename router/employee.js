@@ -1,4 +1,4 @@
-const employeeController = require('../controllers/employee');
+const employeeController = require('../controller/employee');
 
 module.exports = (app) => {
     app.get('/api/employees', employeeController.getAllEmployees);

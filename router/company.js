@@ -1,4 +1,4 @@
-const companyController = require('../controllers/company');
+const companyController = require('../controller/company');
 
 module.exports = (app) => {
     app.get('/api/companies', companyController.getAll);

@@ -1,4 +1,4 @@
-const positionController = require('../controllers/position');
+const positionController = require('../controller/position');
 
 module.exports = (app) => {
     app.get('/api/positions', positionController.getAllPositions);

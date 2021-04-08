@@ -3,21 +3,21 @@ const r = require('rethinkdb');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-//IMPORT MODELS
-require('./models/company');
-require('./models/employee');
-require('./models/user');
+//IMPORT MODEL
+require('./model/company');
+require('./model/employee');
+require('./model/user');
 
 app.use(express.json());
 
-//IMPORT ROUTES
-require('./routers/company')(app);
-require('./routers/employee')(app);
-require('./routers/user')(app);
-require('./routers/position')(app);
+//IMPORT ROUTE
+require('./router/company')(app);
+require('./router/employee')(app);
+require('./router/user')(app);
+require('./router/position')(app);
 
 // CONNECT TO DB
-(async () => { 
+(async () => {
     try {
         const conn = await r.connect();
         console.log(await r.dbList().run(conn))

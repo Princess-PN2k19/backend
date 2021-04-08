@@ -1,5 +1,5 @@
 const r = require('rethinkdb');
-const Position = require('../models/position');
+const Position = require('../model/position');
 
 module.exports = {
     getAllPositions: async (req, res) => {
