@@ -6,6 +6,13 @@ module.exports = {
 
         return res.status(200).send(employees);
     },
+
+    getByCompany: async (req, res) => {
+        const employee_by_company = await Employee.getByCompany();
+
+        return res.status(200).send(employee_by_company);
+    },
+
     create: async (req, res) => {
         const { employee_name, employee_position, company_name } = req.body
         const employee_by_name = await Employee.getByEmployeeName(employee_name)
@@ -20,9 +27,8 @@ module.exports = {
         } else {
             const employee = await Employee.create(req.body);
 
-            return res.status(201).send({
+            return res.status(200).send({
                 error: false,
-                employee
             })
         }
 
@@ -42,6 +48,7 @@ module.exports = {
         const get_employees_company = employee_by_name.map((item) => item.company_name)
 
         if (get_employees_positions.includes(employee_position) && get_employees_company.includes(company_name)) {
+            
             return res.status(409).send({ //code 409 conflict
                 error: true,
                 message: 'Employee Already Exists!'
@@ -49,19 +56,19 @@ module.exports = {
         }
         else {
             const employee = await Employee.update(id, req.body);
-            return res.status(202).send({
+            return res.status(200).send({
                 error: false,
                 employee
             })
         }
-
     },
+
     delete: async (req, res) => {
         const { id } = req.params;
 
         const employee = await Employee.delete(id);
 
-        return res.status(202).send({
+        return res.status(200).send({
             error: false,
             employee
         })

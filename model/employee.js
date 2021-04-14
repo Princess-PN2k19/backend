@@ -1,28 +1,32 @@
 var r = require('rethinkdbdash')();
 
 module.exports = {
-    getAll: async () => {
+    getAll: () => {
         return r.table('employee').filter({status: 'Active'}).coerceTo('array').run()
     },
 
-    getById: async(id) => {
+    getById: (id) => {
         return r.table('employee').get(id).run()
     },
 
-    create: async (data) => {
+    create: (data) => {
         return r.table('employee').insert(data).run()
     },
 
-    update: async (id, data) => {
+    update: (id, data) => {
         console.log(data)
         return r.table('employee').get(id).update(data).run()
     },
 
-    delete: async (id) => {
+    delete: (id) => {
         return r.table('employee').get(id).update({status: 'Inactive'}).run()
     },
 
-    getByEmployeeName: async (name) => {
+    getByEmployeeName: (name) => {
         return r.table('employee').filter({employee_name: name , status: 'Active'}).coerceTo('array').run()
+    },
+
+    getByCompany: (company) => {
+        return r.table('employee').filter({company_name: company, status: 'Active'}).coerceTo('array').run()
     }
 }

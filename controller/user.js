@@ -10,20 +10,16 @@ module.exports = {
     login: async (req, res) => {
         const user = await User.login(req.body);
 
-        try {
-            if (user.length > 0) {
-                return res.status(200).send({
-                    error: false,
-                    user
-                })
-            } else {
-                return res.status(401).send({
-                    error: true,
-                    user
-                })
-            }
-        } catch (err) {
-
+        if (user.length > 0) {
+            return res.status(200).send({
+                error: false,
+                user
+            })
+        } else {
+            return res.status(401).send({
+                error: true,
+                user
+            })
         }
     },
     register: async (req, res) => {
@@ -33,11 +29,11 @@ module.exports = {
 
         if (result.length > 1) {
             return res.status(409).send({
-                error: true, 
+                error: true,
                 message: "Username already exist!"
             })
         } else {
-            return res.status(201).send({
+            return res.status(200).send({
                 error: false,
                 user
             })

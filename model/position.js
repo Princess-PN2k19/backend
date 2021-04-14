@@ -1,10 +1,10 @@
 var r = require('rethinkdbdash')();
 
 module.exports ={
-    getAll: async () => {
+    getAll: () => {
         return r.table('positions').coerceTo('array').run()
     },
-    create: async (data) => {
+    create: (data) => {
         return r.table('positions').insert(data).run()
     }
 }

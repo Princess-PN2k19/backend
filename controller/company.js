@@ -20,7 +20,7 @@ module.exports = {
         } else {
             const company = await Company.create(req.body);
 
-            return res.status(201).send({
+            return res.status(200).send({
                 error: false,
                 company
             })
