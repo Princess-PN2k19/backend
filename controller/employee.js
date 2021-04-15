@@ -22,7 +22,7 @@ module.exports = {
         if (get_employees_positions.includes(employee_position) && get_employees_company.includes(company_name)) {
             return res.status(409).send({ //code 409 conflict
                 error: true,
-                message: 'Employee Already Exists!'
+                message: 'Employee Already Exist!'
             })
         } else {
             const employee = await Employee.create(req.body);
@@ -51,7 +51,7 @@ module.exports = {
             
             return res.status(409).send({ //code 409 conflict
                 error: true,
-                message: 'Employee Already Exists!'
+                message: 'Employee Already Exist!'
             })
         }
         else {

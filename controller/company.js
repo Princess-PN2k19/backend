@@ -15,7 +15,7 @@ module.exports = {
         if (get_companies.includes(company_name)) {
             return res.status(409).send({ //code 409 conflict
                 error: true,
-                message: 'Company Already Exists!'
+                message: 'Company Already Exist!'
             })
         } else {
             const company = await Company.create(req.body);
@@ -43,7 +43,7 @@ module.exports = {
         if (get_companies.includes(company_name)) {
             return res.status(409).send({ //code 409 conflict
                 error: true,
-                message: 'Company Already Exists!'
+                message: 'Company Already Exist!'
             })
         } else {
             const company = await Company.update(id, req.body);

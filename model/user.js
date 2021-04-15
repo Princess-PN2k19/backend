@@ -6,7 +6,7 @@ module.exports = {
     },
 
     login: (data) => {
-        return r.table('user').filter(r.row('username').eq(data.username)).filter(r.row('password').eq(data.password)).filter(r.row('company').eq(data.company)).coerceTo('array').run()
+        return r.table('user').filter(r.row('username').eq(data.username)).filter(r.row('password').eq(data.password)).coerceTo('array').run()
     },
 
     register: (data) => {
